@@ -1,4 +1,4 @@
-
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -156,6 +156,85 @@ footer {
   text-align: center;
   padding: 40px 10px;
   color: #b18a99;
+}.envelope-wrapper {
+  text-align: center;
+  margin: 35px auto;
+  cursor: pointer;
+  width: 230px;
+}
+
+.envelope-box {
+  position: relative;
+  width: 230px;
+  height: 150px;
+  margin: auto;
+  background: #d995aa;
+  border-radius: 8px;
+  box-shadow: 0 12px 25px #0002;
+  perspective: 800px;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #e8b6c5;
+  border-radius: 8px;
+}
+
+.letter-preview {
+  position: absolute;
+  background: #fff9f5;
+  width: 190px;
+  height: 125px;
+  left: 20px;
+  top: 12px;
+  display: grid;
+  place-items: center;
+  color: #c87591;
+  font-size: 35px;
+  transition: transform 0.8s ease;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #d995aa;
+  clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 8px;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  background: #efc5d2;
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+  transform-origin: top;
+  transition: transform 0.7s ease;
+}
+
+.envelope-heart {
+  position: absolute;
+  top: 58px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-size: 27px;
+  z-index: 3;
+}
+
+.envelope-caption {
+  color: #b56f87;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-wrapper.open .letter-preview {
+  transform: translateY(-75px);
 }
 </style>
 </head>
@@ -203,7 +282,16 @@ footer {
     <h2>A letter for you 💌</h2>
     <p>There's something I wanted you to read...</p>
 
-    <button class="envelope" id="envelope"
+   <div class="envelope-wrapper" id="envelope">
+  <div class="envelope-box">
+    <div class="envelope-back"></div>
+    <div class="letter-preview">♡</div>
+    <div class="envelope-front"></div>
+    <div class="envelope-flap"></div>
+    <div class="envelope-heart">♡</div>
+  </div>
+  <p class="envelope-caption">open me ♡</p>
+</div>
       onclick="openLetter()">💌</button>
 
     <div id="letter" class="letter hidden">
@@ -321,10 +409,12 @@ document.getElementById("password").addEventListener("keydown", e => {
 
 function openLetter() {
   const letter = document.getElementById("letter");
-  letter.classList.toggle("hidden");
-  document.getElementById("envelope").textContent =
-    letter.classList.contains("hidden") ? "💌" : "💗";
+  const isOpen = !letter.classList.toggle("hidden");
+
+  document.getElementById("envelope").classList.toggle("open", isOpen);
 }
+
+document.getElementById("envelope").addEventListener("click", openLetter);
 
 let audioContext = null;
 let playing = false;
