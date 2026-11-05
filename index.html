@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mhmmh, ure gnna like it ig.... ♡</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f8eef1;
+  color: #654c57;
+  font-family: Georgia, serif;
+}
+
+button, input { font: inherit; }
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 20px;
+  background: #c58ba2;
+  color: white;
+  transition: .2s;
+}
+
+button:hover { transform: translateY(-2px); }
+
+.hidden { display: none !important; }
+
+#gate {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.login {
+  background: #fffaf9;
+  padding: 35px;
+  border-radius: 25px;
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 35px #b88c9b25;
+}
+
+.login h1 { color: #ad718b; }
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin: 15px 0;
+  border: 1px solid #e3c4d0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+#error { color: #b44b65; }
+
+.container {
+  max-width: 720px;
+  margin: auto;
+  padding: 25px 18px;
+}
+
+.hero {
+  text-align: center;
+  padding: 75px 10px 45px;
+}
+
+.hero h1 {
+  font-size: clamp(35px, 8vw, 53px);
+  color: #ad718b;
+  margin: 15px 0;
+}
+
+.hero p { color: #a48792; }
+
+.small {
+  letter-spacing: 3px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.card {
+  background: #fffaf9;
+  padding: 28px;
+  border-radius: 22px;
+  margin: 25px 0;
+  box-shadow: 0 5px 25px #b88c9b13;
+  line-height: 1.8;
+}
+
+h2 { color: #ad718b; }
+
+.envelope {
+  display: block;
+  margin: 25px auto;
+  width: 190px;
+  height: 130px;
+  font-size: 48px;
+  border-radius: 12px;
+  background: #e6b3c5;
+  color: white;
+}
+
+.letter {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  margin-top: 20px;
+  line-height: 2;
+  animation: appear .5s;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.signature {
+  text-align: right;
+  color: #ad718b;
+}
+
+.question {
+  padding: 18px 0;
+  border-bottom: 1px solid #eedce2;
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.answers button { font-size: 13px; }
+
+.surprise {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  line-height: 1.7;
+}
+
+.locked { opacity: .4; }
+
+footer {
+  text-align: center;
+  padding: 40px 10px;
+  color: #b18a99;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="gate">
+  <div class="login">
+    <div style="font-size:45px">♡</div>
+    <p class="small">A little place for you</p>
+    <h1>Mhmmh...</h1>
+    <p>You need a little secret to enter.</p>
+
+    <input id="password" type="password"
+      placeholder="Our secret date">
+
+    <button onclick="unlock()">Open my surprise ♡</button>
+    <p id="error"></p>
+  </div>
+</div>
+
+<!-- MAIN WEBSITE -->
+<main id="website" class="hidden">
+<div class="container">
+
+  <section class="hero">
+    <p class="small">made with love, just for you</p>
+    <h1>Mhmmh, ure gnna like it ig....</h1>
+    <p>A little corner of the internet that belongs to you ♡</p>
+  </section>
+
+  <div class="card" style="text-align:center">
+    <p class="small">A little soundtrack</p>
+    <button id="musicButton" onclick="toggleMusic()">
+      ♫ Play our little tune
+    </button>
+    <p style="font-size:12px;color:#ad8c99">
+      A tiny original melody, just for this page.
+    </p>
+  </div>
+
+  <section class="card" style="text-align:center">
+    <p class="small">Something waiting for you</p>
+    <h2>A letter for you 💌</h2>
+    <p>There's something I wanted you to read...</p>
+
+    <button class="envelope" id="envelope"
+      onclick="openLetter()">💌</button>
+
+    <div id="letter" class="letter hidden">
+      <p>Hey you,</p>
+
+      <p>
+        I honestly don't know where to start.
+        I just wanted to make something special for you,
+        something that you could open whenever you wanted
+        and remember how important you are to me.
+      </p>
+
+      <p>
+        Even on ordinary days, you make things feel
+        a little more special. I love all the little
+        moments, the conversations, the laughs and
+        everything that makes us us.
+      </p>
+
+      <p>
+        I hope this little website makes you smile.
+        It's not something huge, but I made it thinking
+        about you, and that's what makes it special to me.
+      </p>
+
+      <p>
+        Thank you for being you. And thank you for
+        being part of my life.
+      </p>
+
+      <p class="signature">Yours, always ♡</p>
+      <p class="small">14 / 02 / 26</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="small">Let's see what you know</p>
+    <h2>A few little questions ♡</h2>
+    <p>Answer them to unlock some surprises.</p>
+
+    <div class="question" id="q1">
+      <b>1. What's my favourite thing about you?</b>
+      <div class="answers">
+        <button onclick="answer(1)">Your smile</button>
+        <button onclick="answer(1)">Your personality</button>
+        <button onclick="answer(1)">Everything</button>
+      </div>
+    </div>
+
+    <div class="question locked" id="q2">
+      <b>2. What would I choose?</b>
+      <div class="answers">
+        <button onclick="answer(2)">A perfect date</button>
+        <button onclick="answer(2)">A quiet day together</button>
+        <button onclick="answer(2)">Both, obviously</button>
+      </div>
+    </div>
+
+    <div class="question locked" id="q3">
+      <b>3. One last question...</b>
+      <div class="answers">
+        <button onclick="answer(3)">A hug</button>
+        <button onclick="answer(3)">A kiss</button>
+        <button onclick="answer(3)">More time together</button>
+      </div>
+    </div>
+
+    <p id="progress">0 / 3 answered</p>
+  </section>
+
+  <section class="card">
+    <p class="small">Little things for you</p>
+    <h2>Your surprises 🎁</h2>
+
+    <div id="s1" class="surprise locked">
+      🔒 <b>Surprise number one</b>
+      <p>You're one of my favourite parts of every day. ♡</p>
+    </div>
+
+    <div id="s2" class="surprise locked">
+      🔒 <b>Surprise number two</b>
+      <p>If I could choose a place to be, I'd choose somewhere with you.</p>
+    </div>
+
+    <div id="s3" class="surprise locked">
+      🔒 <b>Surprise number three</b>
+      <p>Here's your reminder: you're loved more than you know. ♡</p>
+    </div>
+  </section>
+
+  <footer>
+    Made especially for you ♡<br>
+    <span class="small">14 / 02 / 26</span>
+  </footer>
+
+</div>
+</main>
+
+<script>
+function unlock() {
+  const value = document.getElementById("password").value;
+
+  if (value === "14/2/26") {
+    document.getElementById("gate").classList.add("hidden");
+    document.getElementById("website").classList.remove("hidden");
+  } else {
+    document.getElementById("error").textContent =
+      "Hmm... try again ♡";
+  }
+}
+
+document.getElementById("password").addEventListener("keydown", e => {
+  if (e.key === "Enter") unlock();
+});
+
+function openLetter() {
+  const letter = document.getElementById("letter");
+  letter.classList.toggle("hidden");
+  document.getElementById("envelope").textContent =
+    letter.classList.contains("hidden") ? "💌" : "💗";
+}
+
+let audioContext = null;
+let playing = false;
+let melodyTimer = null;
+let noteIndex = 0;
+
+function toggleMusic() {
+  const button = document.getElementById("musicButton");
+
+  if (!audioContext) {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  if (playing) {
+    clearInterval(melodyTimer);
+    playing = false;
+    button.textContent = "♫ Play our little tune";
+    return;
+  }
+
+  audioContext.resume();
+  playing = true;
+  button.textContent = "Ⅱ Pause music";
+
+  const notes = [261.63, 329.63, 392, 329.63,
+                 293.66, 349.23, 392, 349.23];
+
+  function playNote() {
+    const osc = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    osc.type = "sine";
+    osc.frequency.value = notes[noteIndex % notes.length];
+
+    gain.gain.setValueAtTime(.0001, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.07, audioContext.currentTime + .05);
+    gain.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime + .65);
+
+    osc.connect(gain);
+    gain.connect(audioContext.destination);
+
+    osc.start();
+    osc.stop(audioContext.currentTime + .7);
+
+    noteIndex++;
+  }
+
+  playNote();
+  melodyTimer = setInterval(playNote, 650);
+}
+
+let answered = 0;
+
+function answer(number) {
+  const question = document.getElementById("q" + number);
+
+  if (question.dataset.done) return;
+
+  question.dataset.done = "true";
+  question.querySelectorAll("button").forEach(button => {
+    button.disabled = true;
+    button.style.opacity = ".55";
+  });
+
+  document.getElementById("s" + number).classList.remove("locked");
+  document.getElementById("s" + number).innerHTML =
+    document.getElementById("s" + number).innerHTML.replace("🔒", "🔓");
+
+  answered++;
+  document.getElementById("progress").textContent =
+    answered + " / 3 answered";
+
+  if (number < 3) {
+    document.getElementById("q" + (number + 1))
+      .classList.remove("locked");
+  }
+}
+</script>
+
+</body>
+</html>
