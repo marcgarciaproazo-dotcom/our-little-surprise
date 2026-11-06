@@ -339,34 +339,36 @@ footer {
     <h2>A few little questions ♡</h2>
     <p>Answer them to unlock some surprises.</p>
 
-    <div class="question" id="q1">
-      <b>1. What's my favourite thing about you?</b>
-      <div class="answers">
-        <button onclick="answer(1)">Your smile</button>
-        <button onclick="answer(1)">Your personality</button>
-        <button onclick="answer(1)">Everything</button>
-      </div>
-    </div>
+  
+<div class="question" id="q1">
+  <b>1. What's my favourite thing about you?</b>
+  <div class="answers">
+    <button onclick="answer(1, false)">Your smile</button>
+    <button onclick="answer(1, false)">Your personality</button>
+    <button onclick="answer(1, true)">The things that you hate about yourself</button>
+  </div>
+</div>
 
-    <div class="question locked" id="q2">
-      <b>2. What would I choose?</b>
-      <div class="answers">
-        <button onclick="answer(2)">A perfect date</button>
-        <button onclick="answer(2)">A quiet day together</button>
-        <button onclick="answer(2)">Both, obviously</button>
-      </div>
-    </div>
+<div class="question locked" id="q2">
+  <b>2. What would I choose?</b>
+  <div class="answers">
+    <button onclick="answer(2, false)">A perfect date with you</button>
+    <button onclick="answer(2, true)">A quiet night playing anything together</button>
+    <button onclick="answer(2, false)">Going somewhere quiet, just us two</button>
+  </div>
+</div>
 
-    <div class="question locked" id="q3">
-      <b>3. One last question...</b>
-      <div class="answers">
-        <button onclick="answer(3)">A hug</button>
-        <button onclick="answer(3)">A kiss</button>
-        <button onclick="answer(3)">More time together</button>
-      </div>
-    </div>
+<div class="question locked" id="q3">
+  <b>3. Do you think Marc is sorry?...</b>
+  <div class="answers">
+    <button onclick="answer(3, true)">Yes</button>
+    <button onclick="answer(3, true)">Too much</button>
+    <button onclick="answer(3, true)">Of course, he is super sorry and he loves you so much</button>
+  </div>
+</div>
 
-    <p id="progress">0 / 3 answered</p>
+<p id="progress">0 / 3 answered</p>
+
   </section>
 
   <section class="card">
@@ -375,17 +377,17 @@ footer {
 
     <div id="s1" class="surprise locked">
       🔒 <b>Surprise number one</b>
-      <p>You're one of my favourite parts of every day. ♡</p>
+      <p>Hehehehe, nothing here, do another question.</p>
     </div>
 
     <div id="s2" class="surprise locked">
       🔒 <b>Surprise number two</b>
-      <p>If I could choose a place to be, I'd choose somewhere with you.</p>
+      <p>Mhmhm, nothing here too...</p>
     </div>
 
     <div id="s3" class="surprise locked">
       🔒 <b>Surprise number three</b>
-      <p>Here's your reminder: you're loved more than you know. ♡</p>
+      <p>You found it, to be honest this cost me so much to do and so i made this kinda for a way of apologizing to you cuz you deserve, and i also guess that i found out why we dont work and its easy, or at least we can try and its basiclly we need to make really clear what we want and give points so this little surprise is done and lets talk if u want now. ♡</p>
     </div>
   </section>
 
@@ -475,22 +477,29 @@ function toggleMusic() {
 
 let answered = 0;
 
-function answer(number) {
+function answer(number, isCorrect) {
   const question = document.getElementById("q" + number);
 
-  if (question.dataset.done) return;
+  if (question.dataset.done === "true") return;
+
+  if (!isCorrect) {
+    alert("Nope, go try again hoe");
+    return;
+  }
 
   question.dataset.done = "true";
+
   question.querySelectorAll("button").forEach(button => {
     button.disabled = true;
     button.style.opacity = ".55";
   });
 
-  document.getElementById("s" + number).classList.remove("locked");
-  document.getElementById("s" + number).innerHTML =
-    document.getElementById("s" + number).innerHTML.replace("🔒", "🔓");
+  const surprise = document.getElementById("s" + number);
+  surprise.classList.remove("locked");
+  surprise.innerHTML = surprise.innerHTML.replace("🔒", "🔓");
 
   answered++;
+
   document.getElementById("progress").textContent =
     answered + " / 3 answered";
 
@@ -498,6 +507,7 @@ function answer(number) {
     document.getElementById("q" + (number + 1))
       .classList.remove("locked");
   }
+}
 }
 </script>
 
